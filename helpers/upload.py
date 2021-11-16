@@ -4,10 +4,10 @@
 
 
 import time
-
+import os
 from hachoir.parser import createParser
 from hachoir.metadata import extractMetadata
-
+from helpers.download_from_url import download_file, get_size
 from helpers.tools import clean_up
 from helpers.progress import progress_func
 
@@ -34,15 +34,22 @@ async def upload_audio(client, message, file_loc):
         artist = metadata.get("artist")
     if metadata and metadata.has("duration"):
         duration = metadata.get("duration").seconds
-
+    
+    fn = os.path.basename(file_loc)
+    fn = os.path.splitext(fn)[0]
+    fn = os.path.splitext(fn)[0]
+    fn = fn + ".m4a"
+    size = os.path.getsize(file_loc)
+    size = get_size(size)
+    
     c_time = time.time()    
-
     try:
         await client.send_audio(
             chat_id=message.chat.id,
             audio=file_loc,
+            file_name=fn,
             thumb=thumb,
-            caption="**@posternaudext001bot**",
+            caption=f"{fn} [{size}]",
             title=title,
             performer=artist,
             duration=duration,
