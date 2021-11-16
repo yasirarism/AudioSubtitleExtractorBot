@@ -3,3 +3,4 @@ TgCrypto
 ffmpeg
 hachoir
 pyromod
+aiohttp
