@@ -1,0 +1,5 @@
+Pyrogram
+TgCrypto
+ffmpeg
+hachoir
+pyromod
