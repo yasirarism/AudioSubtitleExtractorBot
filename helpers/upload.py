@@ -7,7 +7,7 @@ import time
 import os
 from hachoir.parser import createParser
 from hachoir.metadata import extractMetadata
-from helpers.download_from_url import download_file, get_size
+from helpers.download_from_url import get_size
 from helpers.tools import clean_up
 from helpers.progress import progress_func
 
