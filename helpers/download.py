@@ -97,11 +97,11 @@ async def download_url_link(client, message):
         link, filename = link.split('|')
         link = link.strip()
         filename = filename.strip()
-        dl_path = os.path.join(f'{DOWNLOAD_DIRECTORY}{filename}')
+        dl_path = os.path.join(f'./{filename}')
     else:
         link = link.strip()
         filename = os.path.basename(link)
-        dl_path = os.path.join(DOWNLOAD_DIRECTORY, os.path.basename(link))
+        dl_path = os.path.join("./", os.path.basename(link))
     
     msg = await client.send_message(
         chat_id=m.chat.id,
