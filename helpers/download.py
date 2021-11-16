@@ -9,7 +9,7 @@ import os
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from helpers.progress import progress_func
 from helpers.tools import execute, clean_up
-from helpers.download_from_url import download_file
+from helpers.download_from_url import download_link
 
 DATA = {}
 
@@ -111,7 +111,7 @@ async def download_url_link(client, message):
     
     start = time.time()
     try:
-        download_location = await download_file(link, dl_path, msg, start, client)
+        download_location = await download_link(link, dl_path, msg, start, client)
     except Exception as e:
         print(e)
         await msg.edit(f"**Download Failed** :\n\n{e}")
