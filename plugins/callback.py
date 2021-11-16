@@ -12,7 +12,7 @@ from script import Script
 
 from helpers.progress import PRGRS
 from helpers.tools import clean_up
-from helpers.download import download_file, DATA
+from helpers.download import download_file, DATA, download_url_link
 from helpers.ffmpeg import extract_audio, extract_subtitle
 
 
@@ -81,7 +81,11 @@ async def cb_handler(client, query):
         await query.message.delete()
         await download_file(client, query.message)
 
-
+    elif query.data == "download_url":
+        await query.answer()
+        await query.message.delete()
+        await download_url_link(client, query.message)
+    
     elif query.data == "progress_msg":
         try:
             msg = "Progress Details...\n\nCompleted : {current}\nTotal Size : {total}\nSpeed : {speed}\nProgress : {progress:.2f}%\nETA: {eta}"
