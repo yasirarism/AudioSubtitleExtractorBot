@@ -36,9 +36,13 @@ async def upload_audio(client, message, file_loc):
         duration = metadata.get("duration").seconds
     
     fn = os.path.basename(file_loc)
+    ex = os.path.splitext(fn)[1]
     fn = os.path.splitext(fn)[0]
     fn = os.path.splitext(fn)[0]
-    fn = fn + ".m4a"
+    if ex == ".aac" or ex == ".mp3":
+        fn = fn + ex
+    else:
+        fn = fn + ".mka"
     size = os.path.getsize(file_loc)
     size = get_size(size)
     
