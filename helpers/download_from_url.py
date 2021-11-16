@@ -31,7 +31,7 @@ def time_formatter(milliseconds: int) -> str:
     return tmp[:-2]
 
 
-async def download_file(url, file_name, message, start_time, bot):
+async def download_link(url, file_name, message, start_time, bot):
     async with aiohttp.ClientSession() as session:
         await download_coroutine(session, url, file_name, message, start_time, bot)
     return file_name
