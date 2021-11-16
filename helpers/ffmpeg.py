@@ -16,7 +16,7 @@ async def extract_audio(client, message, data):
         out_loc = data['location'] + ".mp3"
         out, err, rcode, pid = await execute(f"ffmpeg -i '{dwld_loc}' -map 0:{data['map']} -c:a copy '{out_loc}' -y")
         if rcode != 0:
-            await message.edit_text("**1 - Error Occured. See Logs for more info.**")
+            await message.edit_text("**1 (mp3) - Error Occured. See Logs for more info.**")
             print(err)
             await clean_up(dwld_loc, out_loc)
             return
@@ -24,14 +24,14 @@ async def extract_audio(client, message, data):
         out_loc = data['location'] + ".aac"
         out, err, rcode, pid = await execute(f"ffmpeg -i '{dwld_loc}' -map 0:{data['map']} -c:a copy '{out_loc}' -y")
         if rcode != 0:
-            await message.edit_text("**1 - Error Occured. See Logs for more info.**")
+            await message.edit_text("**2 (aac) - Error Occured. See Logs for more info.**")
             print(err)
             await clean_up(dwld_loc, out_loc)
             return
     else:
         out, err, rcode, pid = await execute(f"ffmpeg -i '{dwld_loc}' -map 0:{data['map']} -c copy '{out_loc}' -y")
         if rcode != 0:
-            await message.edit_text("**2 - Error Occured. See Logs for more info.**")
+            await message.edit_text("**3 (etc) - Error Occured. See Logs for more info.**")
             print(err)
             await clean_up(dwld_loc, out_loc)
             return
