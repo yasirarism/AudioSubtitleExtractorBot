@@ -47,7 +47,7 @@ async def upload_audio(client, message, file_loc):
         await client.send_audio(
             chat_id=message.chat.id,
             audio=file_loc,
-            file_name=fn,
+            file_name=str(fn),
             thumb=thumb,
             caption=f"{fn} [{size}]",
             title=title,
