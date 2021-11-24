@@ -10,31 +10,15 @@ async def extract_audio(client, message, data):
     await message.edit_text("Extracting Stream from file...")
 
     dwld_loc = data['location']
-    out_loc = data['location'] + ".mka"
+    out_loc = data['location'] + ".mp3"
 
-    if data['name'] == "mp3":
-        out_loc = data['location'] + ".mp3"
-        out, err, rcode, pid = await execute(f"ffmpeg -i '{dwld_loc}' -map 0:{data['map']} -c:a copy '{out_loc}' -y")
-        if rcode != 0:
-            await message.edit_text("**1 (mp3) - Error Occured. See Logs for more info.**")
-            print(err)
-            await clean_up(dwld_loc, out_loc)
-            return
-    elif 'aac' in data['name']:
-        out_loc = data['location'] + ".aac"
-        out, err, rcode, pid = await execute(f"ffmpeg -i '{dwld_loc}' -map 0:{data['map']} -c:a copy '{out_loc}' -y")
-        if rcode != 0:
-            await message.edit_text("**2 (aac) - Error Occured. See Logs for more info.**")
-            print(err)
-            await clean_up(dwld_loc, out_loc)
-            return
-    else:
-        out, err, rcode, pid = await execute(f"ffmpeg -i '{dwld_loc}' -map 0:{data['map']} -c copy '{out_loc}' -y")
-        if rcode != 0:
-            await message.edit_text("**3 (etc) - Error Occured. See Logs for more info.**")
-            print(err)
-            await clean_up(dwld_loc, out_loc)
-            return
+    out, err, rcode, pid = await execute(f"ffmpeg -i '{dwld_loc}' -map 0:{data['map']} -af \"pan=stereo|c0=c1|c1=c01\" -ar 48000 -ab 256k -f mp3 '{out_loc}' -y")
+    if rcode != 0:
+        await message.edit_text("**(mp3 256k) - Error Occured. See Logs for more info.**")
+        print(err)
+        await clean_up(dwld_loc, out_loc)
+        return
+    
 
     await clean_up(dwld_loc)
     await upload_audio(client, message, out_loc)
