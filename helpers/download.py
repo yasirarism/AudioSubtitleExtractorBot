@@ -54,6 +54,7 @@ async def download_file(client, message):
         mapping = stream["index"]
         stream_name = stream["codec_name"]
         stream_type = stream["codec_type"]
+        codec_long_name = stream['codec_long_name']
         if stream_type in ("audio", "subtitle"):
             pass
         else:
@@ -72,7 +73,7 @@ async def download_file(client, message):
         }
         buttons.append([
             InlineKeyboardButton(
-                f"{stream_type.upper()} - {str(lang).upper()}",
+                f"{stream_type.upper()} - {str(lang).upper()} [{codec_long_name}]",
                 f"{stream_type}_{mapping}_{message.chat.id}-{msg.id}")
         ])
 
@@ -150,7 +151,7 @@ async def download_url_link(client, message):
         }
         buttons.append([
             InlineKeyboardButton(
-                f"{stream_type.upper()} - {str(lang).upper()} {codec_long_name}",
+                f"{stream_type.upper()} - {str(lang).upper()} [{codec_long_name}]",
                 f"{stream_type}_{mapping}_{m.chat.id}-{msg.id}")
         ])
 
