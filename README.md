@@ -7,29 +7,22 @@
   </a>
 </p>
 <p align="center">
-  <a href="https://github.com/TroJanzHEX/Streams-Extractor/stargazers">
-    <img src="https://img.shields.io/github/stars/TroJanzHEX/Streams-Extractor?style=social">
+  <a href="https://github.com/yasirarism/AudioSubtitleExtractorBot/stargazers">
+    <img src="https://img.shields.io/github/stars/yasirarism/AudioSubtitleExtractorBot?style=social">
 
   </a>
   
-  <a href="https://github.com/TroJanzHEX/Streams-Extractor/fork">
-    <img src="https://img.shields.io/github/forks/TroJanzHEX/Streams-Extractor?label=Fork&style=social">
+  <a href="https://github.com/yasirarism/AudioSubtitleExtractorBot/fork">
+    <img src="https://img.shields.io/github/forks/yasirarism/AudioSubtitleExtractorBot?label=Fork&style=social">
 
   </a>  
 </p>
 
-[![TroJanz](https://img.shields.io/badge/TroJanzHEX-Channel-orange?style=for-the-badge&logo=telegram)](https://telegram.dog/TroJanzHEX)  
-ㅤㅤㅤㅤㅤㅤㅤ  
-[![TroJanz](https://img.shields.io/badge/TroJanzHEX-Support-red?style=flat&logo=telegram)](https://telegram.dog/TroJanzSupport)  [![TroJanz](https://img.shields.io/badge/TroJanzHEX-Website-red?style=flat&logo=CodersRank)](https://TroJanzHEX.me)  
-ㅤㅤㅤㅤㅤㅤㅤ  
 [![MIT license](https://img.shields.io/badge/License-MIT-blue?style=flat)](https://github.com/TroJanzHEX/Streams-Extractor/blob/main/COPYING)  [![Open Source](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/TroJanzHEX/Streams-Extractor)
 
 
 #### This Bot can extract audios and subtitles from video files.
 #### Send any valid video file and the bot shows you available streams in it that can be extracted!!
-
-## Any bugs or errors or suggestions, report at [TroJanzSupport](https://telegram.dog/TroJanzSupport)
-
 
 ## 🚀 Deployment
 
@@ -57,8 +50,6 @@ python3 main.py
 * APP_ID        - From my.telegram.org (or @UseTGXBot)
 
 * API_HASH      - From my.telegram.org (or @UseTGXBot)
-
-* AUTH_USERS    - Get from @MissRose_bot by /id command
 
 ## Credits
 
