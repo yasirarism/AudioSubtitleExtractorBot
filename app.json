@@ -8,9 +8,9 @@
         "Telegram Bot",
         "TroJanzHEX"
     ],
-    "website": "https://TroJanzHEX.me",
-    "repository": "https://github.com/TroJanzHEX/Streams-Extractor",
-    "success_url": "https://telegram.dog/TroJanzHEX",
+    "website": "https://yasirweb.eu.org",
+    "repository": "https://github.com/yasirarism/AudioSubtitleExtractorBot",
+    "success_url": "https://t.me/YasirArisM",
     "env": {
         "BOT_TOKEN": {
             "description": "You Telegram Bot Token from @BotFather",
@@ -22,10 +22,6 @@
         },
         "APP_ID": {
             "description": "Your APP ID from my.telegram.org or @UseTGXBot",
-            "value": ""
-        },
-        "AUTH_USERS": {
-            "description": "Id of users that can use the bot, from @MissRose_bot by /id command",
             "value": ""
         }
     },
