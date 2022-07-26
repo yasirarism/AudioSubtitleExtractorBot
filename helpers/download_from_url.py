@@ -1,6 +1,7 @@
 import aiohttp
 import os
 import time
+from pyrogram import enums
 #from telethon import Button, custom, events
 
 
@@ -57,7 +58,7 @@ async def download_coroutine(session, url, file_name, event, start, bot):
                 os.path.basename(file_name).replace("%20", " "),
                 get_size(total_length),
             ),
-            parse_mode="md",
+            parse_mode=enums.ParseMode.MARKDOWN,
         )
         with open(file_name, "wb") as f_handle:
             while True:
@@ -89,7 +90,7 @@ ETA: {}""".format("%.2f" % (percentage), url, file_name.split("/")[-1], humanbyt
                             and current_message != "empty"
                         ):
                             print(current_message)
-                            await event.edit(current_message, parse_mode="html")
+                            await event.edit(current_message, parse_mode=enums.ParseMode.HTML")
                             
                             display_message = current_message
                     except Exception as e:
