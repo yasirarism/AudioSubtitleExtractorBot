@@ -53,7 +53,7 @@ async def upload_audio(client, message, file_loc):
             audio=file_loc,
             file_name=str(fn),
             thumb=thumb,
-            caption=f"`{fn}` [{size}]\n\nBot by @YasirPediaChannel",
+            caption=f"`{fn}` [{size}]\n\n<b>Bot by </b>@YasirPediaChannel",
             title=title,
             performer=artist,
             duration=duration,
@@ -83,7 +83,7 @@ async def upload_subtitle(client, message, file_loc):
         await client.send_document(
             chat_id=message.chat.id,
             document=file_loc,
-            caption="<code>Bot by @YasirPediaChannel</code>",
+            caption="<b>Bot by </b>@YasirPediaChannel",
             progress=progress_func,
             progress_args=("**Uploading extracted subtitle...**", msg, c_time))
     except Exception as e:
