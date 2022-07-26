@@ -2,20 +2,13 @@
 # -*- coding: utf-8 -*-
 # @trojanzhex
 
-
 import os
 import time
 
-
 PRGRS = {}
 
-async def progress_func(
-    current,
-    total,
-    ud_type,
-    message,
-    start
-):
+
+async def progress_func(current, total, ud_type, message, start):
     now = time.time()
     diff = now - start
     if round(diff % 5.00) == 0 or current == total:
@@ -28,7 +21,7 @@ async def progress_func(
         elapsed_time = TimeFormatter(milliseconds=elapsed_time)
         estimated_total_time = TimeFormatter(milliseconds=estimated_total_time)
 
-        PRGRS[f"{message.chat.id}_{message.message_id}"] = {
+        PRGRS[f"{message.chat.id}_{message.id}"] = {
             "current": humanbytes(current),
             "total": humanbytes(total),
             "speed": humanbytes(speed),
