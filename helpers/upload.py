@@ -22,14 +22,12 @@ async def upload_audio(client, message, file_loc):
                                           callback_data="progress_msg")
                                   ]]))
 
-    title = None
     artist = None
     thumb = None
     duration = 0
 
     metadata = extractMetadata(createParser(file_loc))
-    if metadata and metadata.has("title"):
-        title = metadata.get("title")
+    title = metadata.get("title") if metadata and metadata.has("title") else None
     if metadata and metadata.has("artist"):
         artist = metadata.get("artist")
     if metadata and metadata.has("duration"):
@@ -39,10 +37,7 @@ async def upload_audio(client, message, file_loc):
     ex = os.path.splitext(fn)[1]
     fn = os.path.splitext(fn)[0]
     fn = os.path.splitext(fn)[0]
-    if ex == ".aac" or ex == ".mp3":
-        fn = fn + ex
-    else:
-        fn = fn + ".mka"
+    fn = fn + ex if ex in [".aac", ".mp3"] else f"{fn}.mka"
     size = os.path.getsize(file_loc)
     size = get_size(size)
 

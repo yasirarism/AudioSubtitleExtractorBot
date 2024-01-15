@@ -18,15 +18,17 @@ def get_size(size):
 def time_formatter(milliseconds: int) -> str:
     """Inputs time in milliseconds, to get beautified time,
     as string"""
-    seconds, milliseconds = divmod(int(milliseconds), 1000)
+    seconds, milliseconds = divmod(milliseconds, 1000)
     minutes, seconds = divmod(seconds, 60)
     hours, minutes = divmod(minutes, 60)
     days, hours = divmod(hours, 24)
-    tmp = (((str(days) + "d, ") if days else "") +
-           ((str(hours) + "h, ") if hours else "") +
-           ((str(minutes) + "m, ") if minutes else "") +
-           ((str(seconds) + "s, ") if seconds else "") +
-           ((str(milliseconds) + "ms, ") if milliseconds else ""))
+    tmp = (
+        (f"{str(days)}d, " if days else "")
+        + (f"{str(hours)}h, " if hours else "")
+        + (f"{str(minutes)}m, " if minutes else "")
+        + (f"{str(seconds)}s, " if seconds else "")
+        + (f"{str(milliseconds)}ms, " if milliseconds else "")
+    )
     return tmp[:-2]
 
 
@@ -76,8 +78,7 @@ async def download_coroutine(session, url, file_name, event, start, bot):
                         (total_length - downloaded) / speed) * 1000)
                     estimated_total_time = elapsed_time + time_to_completion
                     try:
-                        if total_length < downloaded:
-                            total_length = downloaded
+                        total_length = max(total_length, downloaded)
                         current_message = """Downloading : {}%
 URL: {}
 File Name: {}
@@ -86,8 +87,7 @@ Downloaded: {}
 ETA: {}""".format("%.2f" % (percentage), url,
                         file_name.split("/")[-1], humanbytes(total_length),
                         humanbytes(downloaded), time_formatter(estimated_total_time))
-                        if (current_message != display_message
-                                and current_message != "empty"):
+                        if current_message not in [display_message, "empty"]:
                             print(current_message)
                             await event.edit(current_message,
                                              parse_mode=enums.ParseMode.HTML)
