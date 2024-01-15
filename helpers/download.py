@@ -55,9 +55,7 @@ async def download_file(client, message):
         stream_name = stream["codec_name"]
         stream_type = stream["codec_type"]
         codec_long_name = stream['codec_long_name']
-        if stream_type in ("audio", "subtitle"):
-            pass
-        else:
+        if stream_type not in ("audio", "subtitle"):
             continue
         try:
             lang = stream["tags"]["language"]
@@ -133,9 +131,7 @@ async def download_url_link(client, message):
         stream_name = stream["codec_name"]
         stream_type = stream["codec_type"]
         codec_long_name = stream['codec_long_name']
-        if stream_type in ("audio", "subtitle"):
-            pass
-        else:
+        if stream_type not in ("audio", "subtitle"):
             continue
         try:
             lang = stream["tags"]["language"]
